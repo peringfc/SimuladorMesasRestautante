@@ -18,9 +18,10 @@ namespace PainelMesasLivres.Estrutura
             
 
             Painel oPainel = new Painel();
-            oPainel.Disponivel = 5;
-            oPainel.Reserva = 23;
+      
+            oPainel.Reserva = rnd.Next(0, 100);
             oPainel.Ocupacao = rnd.Next(0, 20);
+            oPainel.Disponivel = Max_Mesas - oPainel.Ocupacao; 
             oPainel.Atendindos = 32;
             int xMesasOcupada = 0;
             int xMesasLivre = 0; 
@@ -49,6 +50,8 @@ namespace PainelMesasLivres.Estrutura
 
             List<string> Nomes = geradorNome.GeradorNomes(oPainel.Ocupacao);
 
+            List<string> NomesReserva = geradorNome.GeradorNomes(oPainel.Reserva);
+
             string xMesasOcupadas = string.Empty;
             string xMesasLivres = string.Empty;
             string xListaEsperaFila = string.Empty;
@@ -72,9 +75,18 @@ namespace PainelMesasLivres.Estrutura
            foreach (var item in Nomes)
             {
                 cliente++; 
-               xListaEsperaFila = xListaEsperaFila + $" <tr><td>{cliente.ToString()}</td><td>{item}</td><td>*</td></tr>"; 
+               xListaEsperaFila = xListaEsperaFila + $" <tr><td>{cliente.ToString()}</td><td>{item}</td><td> na Mesa</td></tr>"; 
             }
 
+            int rcliente = 0;
+
+            xListaEsperaFila = xListaEsperaFila + $" <tr><td><center> <b> R E S E R V A S </center> </b></td><td><center> <b> E M </center> </b> </td><td> <center> <b> E M   A B E R T O </center> </b></td></tr>";
+
+            foreach (var item in NomesReserva)
+            {
+                rcliente++;
+                xListaEsperaFila = xListaEsperaFila + $" <tr><td>{cliente.ToString()}</td><td>{item}</td><td> Reserva</td></tr>";
+            }
 
             oPainel.MesasOcupadas = xMesasOcupadas;
             oPainel.MesasLivres = xMesasLivres;
