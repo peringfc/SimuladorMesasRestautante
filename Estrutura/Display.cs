@@ -72,6 +72,7 @@ namespace PainelMesasLivres.Estrutura
 
             int cliente = 0;
 
+
            foreach (var item in Nomes)
             {
                 cliente++; 
@@ -82,10 +83,12 @@ namespace PainelMesasLivres.Estrutura
 
             xListaEsperaFila = xListaEsperaFila + $" <tr><td><center> <b> R E S E R V A S </center> </b></td><td><center> <b> E M </center> </b> </td><td> <center> <b> E M   A B E R T O </center> </b></td></tr>";
 
+
+
             foreach (var item in NomesReserva)
             {
                 rcliente++;
-                xListaEsperaFila = xListaEsperaFila + $" <tr><td>{cliente.ToString()}</td><td>{item}</td><td> Reserva</td></tr>";
+                xListaEsperaFila = xListaEsperaFila + $" <tr><td>{rcliente.ToString()}</td><td>{item}</td><td> Reserva</td></tr>";
             }
 
             oPainel.MesasOcupadas = xMesasOcupadas;
